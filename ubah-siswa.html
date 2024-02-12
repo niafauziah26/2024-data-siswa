@@ -30,7 +30,7 @@
 
       let tombolUbah = document.getElementById('tombol-ubah');
       let elemenNamaSiswa = document.getElementById('input-nama');
-      const queryString =window.location.search;
+      const queryString = window.location.search;
       const parameterURL = new URLSearchParams(queryString);
       const docId = parameterURL.get('docId');
       const siswa = await ambilSiswa(docId);
