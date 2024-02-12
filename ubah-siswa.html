@@ -13,27 +13,33 @@
   </head>
 
   <body class="m-4">
-    <h1>Data Siswa</h1>
+    <h1>Ubah Data Siswa</h1>
 
     <form class="mb-3">
       <div class="mb-3">
         <label class="form-label">Nama Siswa</label>
         <input type="text" class="form-control" id="input-nama">
       </div>
-      <button type="submit" class="btn btn-primary" id="tombol-tambah">Simpan</button>
+      <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
     </form>
     <a href="siswa.html" class="mt-1">Lihat Daftar Siswa</a>
 
 
     <script type="module">
-      import { tambahSiswa } from './main.js';
+      import { ambilSiswa, ubahSiswa } from './main.js';
 
-      let tombolTambah = document.getElementById('tombol-tambah');
+      let tombolUbah = document.getElementById('tombol-ubah');
       let elemenNamaSiswa = document.getElementById('input-nama');
+      const queryString =window.location.search;
+      const parameterURL = new URLSearchParams(queryString);
+      const docId = parameterURL.get('docId');
+      const siswa = await ambilSiswa(docId);
+      
+      elemenNamaSiswa.value = siswa.nama;
 
-      tombolTambah.addEventListener('click', async function(el) {
+      tombolUbah.addEventListener('click', async function(el) {
         el.preventDefault();
-        await tambahSiswa(elemenNamaSiswa.value);
+       await ubahSiswa(docId, elemenNamaSiswa.value);
         window.location.href = 'siswa.html';
       });
     </script>
