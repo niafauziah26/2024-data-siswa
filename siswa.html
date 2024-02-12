@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +16,7 @@
 
 <body class="m-4">
   <h1>Daftar Siswa</h1>
-  
+
   <ul id="daftar-siswa" class="list-group"></ul>
 
 
@@ -44,13 +46,13 @@
           '</li>'
         );
       });
-      
+
       $('.tombol-hapus').click(async function() {
         await hapusSiswa($(this).attr('data'));
         location.reload();
       })
-      
-      $('.link-ubah').click (async function() {
+
+      $('.link-ubah').click(async function() {
         window.location.replace('ubah-siswa.html?docId=' + $(this).attr('data'));
       })
     });
